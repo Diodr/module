@@ -56,7 +56,7 @@ window.onload = () => {
                 
                 case "MODULE":
                     loadsModules[element.attributes.name.value]=false
-                    IMPORT("module/"+element.attributes.name.value+".js")
+                    IMPORT("https://diodr.github.io/module/module/"+element.attributes.name.value+".js")
                     break;
 
                 case "JS":
