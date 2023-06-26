@@ -1,4 +1,15 @@
 var head = document.head
+
+var loadsModules = {}
+
+var PAGES = {}
+
+var endloader = document.getElementsByTagName('endloader')[0]
+
+var miniVars = {}
+
+var WINDOW 
+
 head.innerHTML += `<style>
 import, load, endloader{
     display:none;
@@ -15,21 +26,6 @@ body,html{
 }
 </style>`
 
-var loadsModules = {
-
-}
-
-
-var PAGES = {
-    
-}
-
-
-var endloader = document.getElementsByTagName('endloader')[0]
-
-var miniVars = {}
-
-var WINDOW 
 
 
 window.onload = () => {
@@ -51,7 +47,7 @@ window.onload = () => {
             console.log(element);
             switch (element.tagName) {
                 case "PAGE":
-                    PAGES[element.attributes.name.value] = element.attributes.src.value
+                    PAGE_MANAGER.PAGES[element.attributes.name.value] = element.attributes.src.value
                     break;
                 
                 case "MODULE":
@@ -69,12 +65,7 @@ window.onload = () => {
             
         }
         
-        
-        
-        //endloader.appendChild(resource)
-        
     }
-    
     var loadsScripts = setInterval((jss,lm)=>{
         if (Object.values(lm).indexOf(false) == -1) {
             for (let i = 0; i < jss.length; i++) {
@@ -82,10 +73,11 @@ window.onload = () => {
                 IMPORT(js)
             }
             clearInterval(loadsScripts)
-
         }
 
     },500,jss,loadsModules)
+
+    PAGE_MANAGER.OPEN_PAGE(location.search==""?location.search.replace("?","").split("=")[1]:"index")
 }
 
 
@@ -93,4 +85,29 @@ function IMPORT(file) {
     let sc = document.createElement('script')
     sc.src = file
     endloader.appendChild(sc)
+}
+
+class PAGE_MANAGER {
+    static PAGES = {}
+
+    static PAGES_LOADING = {}
+
+    static CREATE_PAGE(name,html=()=>{},elements=()=>{}){
+        PAGE_MANAGER.PAGES_LOADING[name] = {
+            "html":html,
+            "elements":elements
+        }
+    }
+
+    static OPEN_PAGE(name){
+        var OP = setInterval((name,O)=>{
+            if (Object.hasOwn(PAGE_MANAGER.PAGES_LOADING,name)) {
+                PAGE_MANAGER.PAGES_LOADING[name].elements()
+                PAGE_MANAGER.PAGES_LOADING[name].html()
+                clearInterval(OP)
+            }
+        },250,name,OP)
+        
+    }
+
 }
