@@ -25,8 +25,6 @@ loadsModules["customElement"]=true
 
 // }
 
-// customElements.define("no-my-new-element", NEW_ELEMENT);
-
 class MyElements {
   static createNewElement(NameElement,html,attributs=[],...args){
     
