@@ -13,7 +13,12 @@ class WINDOW {
 
     static set html(value){
         this._html = value
+        this.window.innerHTML = value
         console.log(value);
+    }
+
+    static get html(){
+        return this._html
     }
 }
 
