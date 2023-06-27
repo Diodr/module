@@ -43,8 +43,12 @@ class MyElements {
         return this.allAtr
       }
     }
-    customElements.define((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)),ELEM)
-    
+
+    if(ustomElements.get((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)))){
+      customElements.upgrade((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)),ELEM)
+    } else {
+      customElements.define((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)),ELEM)
+    }
     `)
     
   }
