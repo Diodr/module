@@ -73,7 +73,7 @@ window.onload = () => {
                 IMPORT(js)
             }
             clearInterval(loadsScripts)
-            PAGE_MANAGER.OPEN_PAGE(location.search==""?location.search.replace("?","").split("=")[1]:"index")
+            PAGE_MANAGER.OPEN_PAGE(location.search!=""?location.search.replace("?","").split("=")[1]:"index")
         }
 
     },500,jss,loadsModules)
