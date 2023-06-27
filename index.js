@@ -12,7 +12,7 @@ class WINDOW {
     static window
 
     static set html(value){
-        this.html = value
+        this._html = value
         console.log(value);
     }
 }
