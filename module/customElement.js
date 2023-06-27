@@ -44,9 +44,7 @@ class MyElements {
       }
     }
 
-    if(customElements.get((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)))){
-      customElements.upgrade((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)),ELEM)
-    } else {
+    if(!customElements.get((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)))){
       customElements.define((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)),ELEM)
     }
     `)
