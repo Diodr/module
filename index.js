@@ -14,7 +14,7 @@ class WINDOW {
     static set html(value){
         this._html = value
         this.window.innerHTML = value
-        console.log(value);
+        console.log(this.html);
     }
 
     static get html(){
