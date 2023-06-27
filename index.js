@@ -8,7 +8,14 @@ var endloader = document.getElementsByTagName('endloader')[0]
 
 var miniVars = {}
 
-var WINDOW 
+class WINDOW {
+    static window
+
+    set static html(value){
+        WINDOW.html = value
+        console.log(value);
+    }
+}
 
 head.innerHTML += `<style>
 import, load, endloader{
@@ -31,7 +38,7 @@ body,html{
 window.onload = () => {
     
     document.getElementsByTagName('body')[0].innerHTML += `<window></window>`
-    WINDOW = document.getElementsByTagName('window')[0]
+    WINDOW.window = document.getElementsByTagName('window')[0]
     
     let loads = document.getElementsByTagName('load')
     
