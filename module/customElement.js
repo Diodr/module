@@ -44,7 +44,7 @@ class MyElements {
       }
     }
 
-    if(ustomElements.get((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)))){
+    if(customElements.get((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)))){
       customElements.upgrade((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)),ELEM)
     } else {
       customElements.define((NameElement.search("-")!=-1?NameElement :("my-"+NameElement)),ELEM)
