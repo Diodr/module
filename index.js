@@ -11,7 +11,7 @@ var miniVars = {}
 class WINDOW {
     static window
 
-    set static html(value){
+    static set html(value){
         WINDOW.html = value
         console.log(value);
     }
